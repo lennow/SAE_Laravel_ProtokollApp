@@ -11,14 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-})->name('index');
+Route::view('/', 'welcome')->name('index');
+Route::resource('protocols', 'ProtocolController');
 
-Route::get('create', function () {
-    return view('create');
-})->name('create');
-
-Route::get('update', function () {
-    return view('update');
-})->name('update');
+Auth::routes();
+Route::get('/home', 'ProtocolController@index')->name('home');
