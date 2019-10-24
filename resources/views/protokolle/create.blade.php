@@ -8,6 +8,7 @@
             </div>
             <div class="card-content">
                <form action="{{ route('protocols.store') }}" method="post">
+                   @csrf
                    <div class="field">
                        <label class="label" for="title">Titel</label>
                        <div class="control">

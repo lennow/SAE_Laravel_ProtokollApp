@@ -2,17 +2,20 @@
 
 @section('content')
 <div class="content">
-    <div class="card">
+    <div class="card" style="width: 75%; margin: 2em auto;">
         <div class="card-header">
-            <h2>Dashboard</h2>
+            <h2 class="card-header-title">Alle Protokolle</h2>
         </div>
         <div class="card-content">
-            @if (session('status'))
-                <div class="alert alert-success" role="alert">
-                    {{ session('status') }}
-                </div>
-            @endif
-            You are logged in!
+            @foreach($protocols as $protocol)
+                <h3>
+                    <a href="{{ route('protocols.show', $protocol->id) }}">{{ $protocol->title }}</a>
+                </h3>
+                <p class="is-small">Kategorie: {{ $protocol->category }}</p>
+                <p>
+                    {{ $protocol->body }}
+                </p>
+            @endforeach
         </div>
     </div>
 </div>
