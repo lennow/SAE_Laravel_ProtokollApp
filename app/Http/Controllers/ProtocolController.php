@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidateCreateForm;
 use Illuminate\Http\Request;
+use App\Protocol;
 
 class ProtocolController extends Controller
 {
@@ -25,7 +26,8 @@ class ProtocolController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $protocols = Protocol::all();
+        return view('home', compact('protocols'));
     }
 
     /**
@@ -57,7 +59,8 @@ class ProtocolController extends Controller
      */
     public function show($id)
     {
-        //
+        $protocol = Protocol::findOrFail($id);
+        return view('protokolle.show', compact('protocol'));
     }
 
     /**
