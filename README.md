@@ -24,3 +24,15 @@ create.blade.php File angelegt, Formular zum Anlegen eines neuen Protokolls ange
 Formularvalidierung eingerichtet (FormRequest ValidateCreateForm angelegt) und in Controller Methode store() eingebunden
 
 Controller Methode create() definiert
+
+21.10.2019
+
+DB Verbindung eingerichtet
+
+Migration und Seeder erstellt, bearbeitet und eingespielt
+
+22.10.2019
+
+Eloquent Model erstellt
+
+Daten aus DB mit Methoden index() und show() in entsprechende Views übertragen und im Frontend angezeigt
