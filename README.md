@@ -33,6 +33,6 @@ Migration und Seeder erstellt, bearbeitet und eingespielt
 
 22.10.2019
 
-Eloquent Model erstellt
+Eloquent Model erstellt, Mass Assignment mit $fillable aktiviert
 
 Daten aus DB mit Methoden index() und show() in entsprechende Views übertragen und im Frontend angezeigt
