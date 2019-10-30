@@ -12,13 +12,13 @@
                    <div class="field">
                        <label class="label" for="title">Titel</label>
                        <div class="control">
-                           <input type="text" id="title" name="title" class="input @errors('title') is-danger @enderrors">
+                           <input type="text" id="title" name="title" class="input @error('title') is-danger @enderror">
                        </div>
                    </div>
                    <div class="field">
                        <label class="label" for="category">Titel</label>
                        <div class="control">
-                           <select id="category" name="category" class="input @errors('category') is-danger @enderrors">
+                           <select id="category" name="category" class="input @error('category') is-danger @enderror">
                                <option value="intern">Internes Meeting</option>
                                <option value="kunde">Kundengespräch</option>
                                <option value="partner">Partnermeeting</option>
@@ -28,7 +28,7 @@
                    <div class="field">
                        <label class="label" for="body">Titel</label>
                        <div class="control">
-                           <textarea id="body" name="body" class="input @errors('body') is-danger @enderrors"></textarea>
+                           <textarea id="body" name="body" class="textarea @error('body') is-danger @enderror"></textarea>
                        </div>
                    </div>
                    <div class="field">

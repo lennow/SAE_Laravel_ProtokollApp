@@ -15,6 +15,16 @@
                 <p>
                     {{ $protocol->body }}
                 </p>
+                <div class="columns">
+                    <p class="column is-one-fifth">
+                        <a href="{{ route('protocols.edit', $protocol->id) }}" class="button is-primary">bearbeiten</a>
+                    </p>
+                    <form action="{{ route('protocols.destroy', $protocol->id) }}" method="post" class="column is-one-fifth">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" name="delete_submit" class="button is-danger">löschen</button>
+                    </form>
+                </div>
             @endforeach
         </div>
     </div>
