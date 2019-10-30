@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidateCreateForm;
-use Illuminate\Http\Request;
+use App\Mail\ProtocolMail;
 use App\Protocol;
 
 class ProtocolController extends Controller
@@ -49,6 +49,15 @@ class ProtocolController extends Controller
     public function store(ValidateCreateForm $request)
     {
         $data = $request->validated();
+        $protocol = new Protocol();
+        $protocol->title = $data['title'];
+        $protocol->category = $data['category'];
+        $protocol->body = $data['body'];
+        $protocol->save();
+
+        Mail::to('smilie79@web.de')->send(new ProtocolMail($data));
+
+        return redirect('home');
     }
 
     /**
@@ -57,9 +66,8 @@ class ProtocolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Protocol $protocol)
     {
-        $protocol = Protocol::findOrFail($id);
         return view('protokolle.show', compact('protocol'));
     }
 
@@ -69,9 +77,9 @@ class ProtocolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Protocol $protocol)
     {
-        //
+        return view('protokolle.edit', compact('protocol'));
     }
 
     /**
@@ -81,9 +89,15 @@ class ProtocolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Protocol $protocol, ValidateCreateForm $request)
     {
-        //
+        $data = $request->validated();
+        $protocol->update([
+            'title' => $data['title'],
+            'category' => $data['category'],
+            'body' => $data['body']
+        ]);
+        return redirect('home');
     }
 
     /**
@@ -92,8 +106,9 @@ class ProtocolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Protocol $protocol)
     {
-        //
+        $protocol->delete();
+        return redirect('home');
     }
 }
